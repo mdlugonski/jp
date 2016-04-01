@@ -18,6 +18,7 @@
 #include<stdio.h>
 #include<string.h>
 #include<ctype.h>
+#include<sdlib.h>
 
 #define IMIE_MAX 10
 #define NAZW_MAX 15
@@ -46,18 +47,24 @@ void  utworz_spis(void) {
   fclose(baza);
 }
 
+//================================================
+//
+int compare(const void * a, const void * b) {
+  return strcmp(*(osoba.nazwisko)a, *(osoba.nazwisko)b);
+}
+
+
+
 //=======================================================
 
-void  sortuj_spis(void) {
-	for(int i=1; i <= IL_OSOB; ++i) {
-		if(strcmp(spis[i-1].nazwisko,spis[i].nazwisko) == 0);
-
-	}
+void  sortuj_spis(struc spis) {
+	qsort ( spis, IL_OSOB, sizeof(osoba), osoba_cmp)
 }
 
 //=======================================================
 
-int  znajdz_nazwisko (char na[NAZW_MAX+1], char im[IMIE_MAX+1], int *p)
+//int  znajdz_nazwisko (char na[NAZW_MAX+1], char im[IMIE_MAX+1], int *p)
+int  znajdz_nazwisko (char *na, char *im, int *p)
 {
 
 	for(int i = 0; i < IL_OSOB; ++i){
@@ -73,6 +80,7 @@ int  znajdz_nazwisko (char na[NAZW_MAX+1], char im[IMIE_MAX+1], int *p)
 
 //=======================================================
 
+//int  znajdz_imie (char im[NAZW_MAX+1], char na[IMIE_MAX+1], int *p)
 int  znajdz_imie (char im[NAZW_MAX+1], char na[IMIE_MAX+1], int *p)
 {
 
